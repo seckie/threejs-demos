@@ -1,25 +1,24 @@
-# From follow tutorial, thanks.
-# http://www.johannes-raida.de/tutorials/three.js/tutorial02/tutorial02.htm
-#
+# From following tutorial. Thanks.
+# http://www.johannes-raida.de/tutorials.htm
 'use strict'
 
 config = require('./config')
 ThreeScene = require('./scene')
 ThreeCamera = require('./camera')
 ThreeLight = require('./light')
-ThreeObject = require('./object')
+ThreeObjects = require('./object')
 
 camera = null
 scene = null
 renderer = null
-object = null
+objects = null
 
 
 init = (data) ->
   scene = ThreeScene(config)
   camera = ThreeCamera(scene, config)
   #light = ThreeLight(scene)
-  object = ThreeObject(scene, config, data)
+  objects = ThreeObjects(scene, config, data)
 
   $container = document.getElementById('canvas')
 
@@ -37,12 +36,23 @@ init = (data) ->
   renderer.setClearColor(0x000000, 1)
   $container.appendChild(renderer.domElement)
 
+  animateScene()
+
+renderScene = () ->
   renderer.render(scene, camera)
   return
 
+animateScene = () ->
+  objects.triangle.rotation.y += 0.1
+  objects.square.rotation.x -= 0.075
+  requestAnimationFrame(animateScene)
+  renderScene()
+  return
 
 # initialize
 window.addEventListener('load', init, false)
+
+
 
 # initialize with some data
 #dataUrl = 'data/something.json'

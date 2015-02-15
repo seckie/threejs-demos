@@ -1,6 +1,8 @@
 'use strict'
 
 initMesh = (scene, config, dataset) ->
+  objects = {}
+
   triangleGeometry = new THREE.Geometry()
   triangleGeometry.vertices.push(new THREE.Vector3(0.0, 1.0, 0.0))
   triangleGeometry.vertices.push(new THREE.Vector3(-1.0, -1.0, 0.0))
@@ -17,6 +19,7 @@ initMesh = (scene, config, dataset) ->
   triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial)
   triangleMesh.position.set(-1.5, 0.0, 4.0)
   scene.add(triangleMesh)
+  objects.triangle = triangleMesh
 
 
   squareGeometry = new THREE.Geometry()
@@ -34,12 +37,12 @@ initMesh = (scene, config, dataset) ->
   squareMesh = new THREE.Mesh(squareGeometry, squareMaterial)
   squareMesh.position.set(1.5, 0.0, 4.0)
   scene.add(squareMesh)
+  objects.square = squareMesh
+
+  return objects
 
 
 init = (scene, config, dataset) ->
-  object = {}
-  if dataset
-    object.mesh = initMesh(scene, config, dataset)
-  return object
+  return initMesh(scene, config, dataset)
 
 module.exports = init
