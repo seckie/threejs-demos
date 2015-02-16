@@ -43,8 +43,9 @@ renderScene = () ->
   return
 
 animateScene = () ->
-  objects.triangle.rotation.y += 0.1
-  objects.square.rotation.x -= 0.075
+  objects.pyramid.rotation.y += 0.1
+  objects.box.rotateOnAxis(new THREE.Vector3(1, 1, 1).normalize(), 0.075)
+
   requestAnimationFrame(animateScene)
   renderScene()
   return
