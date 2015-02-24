@@ -1,7 +1,9 @@
 {
   "name": "website-package",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "three": "^0.69.0"
+  },
   "devDependencies": {
     "browser-sync": "^1.9.1",
     "browserify": "^8.1.3",

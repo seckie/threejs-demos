@@ -13,6 +13,10 @@ scene = null
 renderer = null
 objects = null
 
+xRotation = 0.0
+yRotation = 0.0
+zRotation = 0.0
+
 
 init = (data) ->
   scene = ThreeScene(config)
@@ -43,10 +47,13 @@ renderScene = () ->
   return
 
 animateScene = () ->
-  objects.pyramid.rotation.y += 0.1
-  objects.box.rotateOnAxis(new THREE.Vector3(1, 1, 1).normalize(), 0.075)
+  xRotation += 0.03
+  yRotation += 0.02
+  zRotation += 0.04
+  objects.box.rotation.set(xRotation, yRotation, zRotation)
 
   requestAnimationFrame(animateScene)
+  # 実際は texture image がロードされてから実行すべき
   renderScene()
   return
 

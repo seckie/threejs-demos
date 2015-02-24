@@ -20,7 +20,6 @@ browserSync = require('browser-sync')
 fs = require('fs')
 
 publicDir = './'
-bowerDir = '../bower_components/'
 
 paths = {
   jade: [
@@ -50,7 +49,7 @@ paths = {
   stylus: [ 'src/stylus/**/*.styl' ]
   cssDir: publicDir + 'css'
   copySrc: [
-    bowerDir + 'threejs/build/three.js'
+    '../node_modules/three/three.js'
   ]
   copyDest: [
     publicDir + 'js'
